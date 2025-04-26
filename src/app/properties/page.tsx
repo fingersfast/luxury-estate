@@ -6,6 +6,7 @@ import PropertyCard from "../../components/properties/PropertyCard";
 import PropertyListItem from "../../components/properties/PropertyListItem";
 import FilterPanel from "../../components/properties/FilterPanel";
 import SortPanel from "../../components/properties/SortPanel";
+import {Suspense} from 'react';
 import {
   properties,
   filterProperties,
@@ -120,6 +121,7 @@ export default function PropertiesPage() {
 
   // UI Code same as before
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <MainLayout>
       <section className="pt-32 pb-20">
         <div className="container mx-auto px-4 md:px-6">
@@ -200,6 +202,8 @@ export default function PropertiesPage() {
           )}
         </div>
       </section>
+      
     </MainLayout>
+    </Suspense>
   );
 }
