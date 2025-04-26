@@ -6,7 +6,7 @@ import PropertyCard from "../../components/properties/PropertyCard";
 import PropertyListItem from "../../components/properties/PropertyListItem";
 import FilterPanel from "../../components/properties/FilterPanel";
 import SortPanel from "../../components/properties/SortPanel";
-import {Suspense} from 'react';
+import { Suspense } from "react";
 import {
   properties,
   filterProperties,
@@ -22,9 +22,17 @@ export default function PropertiesPage() {
   // Filter states
   const [locationFilter, setLocationFilter] = useState<string>("All Locations");
   const [typeFilter, setTypeFilter] = useState<string>("All Types");
-  const [minBedroomsFilter, setMinBedroomsFilter] = useState<number | null>(null);
-  const [priceRange, setPriceRange] = useState<[number | null, number | null]>([null, null]);
-  const [areaRange, setAreaRange] = useState<[number | null, number | null]>([null, null]);
+  const [minBedroomsFilter, setMinBedroomsFilter] = useState<number | null>(
+    null
+  );
+  const [priceRange, setPriceRange] = useState<[number | null, number | null]>([
+    null,
+    null,
+  ]);
+  const [areaRange, setAreaRange] = useState<[number | null, number | null]>([
+    null,
+    null,
+  ]);
 
   // Sort and view states
   const [sortOption, setSortOption] = useState<string>("price-desc");
@@ -55,7 +63,7 @@ export default function PropertiesPage() {
     minBedroomsFilter,
     priceRange,
     areaRange,
-    sortOption
+    sortOption,
   ]);
 
   // 🛠 THEN use applyFilters inside useEffect
@@ -121,8 +129,8 @@ export default function PropertiesPage() {
 
   // UI Code same as before
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <MainLayout>
+    <MainLayout>
+      <Suspense fallback={<div>Loading...</div>}>
         <section className="pt-32 pb-20">
           <div className="container mx-auto px-4 md:px-6">
             <div className="mb-12 text-center">
@@ -187,10 +195,12 @@ export default function PropertiesPage() {
               </>
             ) : (
               <div className="text-center py-16">
-                <h3 className="text-xl font-medium mb-2">No properties found</h3>
+                <h3 className="text-xl font-medium mb-2">
+                  No properties found
+                </h3>
                 <p className="text-muted mb-6">
-                  No properties match your current filter criteria. Try adjusting
-                  your filters.
+                  No properties match your current filter criteria. Try
+                  adjusting your filters.
                 </p>
                 <button
                   onClick={resetFilters}
@@ -202,8 +212,7 @@ export default function PropertiesPage() {
             )}
           </div>
         </section>
-        
-      </MainLayout>
-    </Suspense>
+      </Suspense>
+    </MainLayout>
   );
 }
