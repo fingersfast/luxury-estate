@@ -122,88 +122,88 @@ export default function PropertiesPage() {
   // UI Code same as before
   return (
     <Suspense fallback={<div>Loading...</div>}>
-    <MainLayout>
-      <section className="pt-32 pb-20">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="mb-12 text-center">
-            <h1 className="text-4xl md:text-5xl font-heading font-medium mb-4">
-              Our Properties
-            </h1>
-            <p className="text-muted max-w-3xl mx-auto">
-              Explore our exclusive collection of luxury properties available
-              for sale and rent in the most prestigious locations.
-            </p>
-          </div>
-
-          {/* Filter Panel */}
-          <FilterPanel
-            location={locationFilter}
-            setLocation={setLocationFilter}
-            propertyType={typeFilter}
-            setPropertyType={setTypeFilter}
-            minBedrooms={minBedroomsFilter}
-            setMinBedrooms={setMinBedroomsFilter}
-            priceRange={priceRange}
-            setPriceRange={setPriceRange}
-            areaRange={areaRange}
-            setAreaRange={setAreaRange}
-            applyFilters={applyFilters}
-            resetFilters={resetFilters}
-          />
-
-          {/* Sort Panel */}
-          <SortPanel
-            sortOption={sortOption}
-            setSortOption={setSortOption}
-            totalProperties={filteredProperties.length}
-            view={view}
-            setView={setView}
-          />
-
-          {/* Properties Grid/List View */}
-          {filteredProperties.length > 0 ? (
-            <>
-              {view === "grid" ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-                  {filteredProperties.map((property, index) => (
-                    <PropertyCard
-                      key={property.id}
-                      property={property}
-                      index={index}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <div className="space-y-6">
-                  {filteredProperties.map((property, index) => (
-                    <PropertyListItem
-                      key={property.id}
-                      property={property}
-                      index={index}
-                    />
-                  ))}
-                </div>
-              )}
-            </>
-          ) : (
-            <div className="text-center py-16">
-              <h3 className="text-xl font-medium mb-2">No properties found</h3>
-              <p className="text-muted mb-6">
-                No properties match your current filter criteria. Try adjusting
-                your filters.
+      <MainLayout>
+        <section className="pt-32 pb-20">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="mb-12 text-center">
+              <h1 className="text-4xl md:text-5xl font-heading font-medium mb-4">
+                Our Properties
+              </h1>
+              <p className="text-muted max-w-3xl mx-auto">
+                Explore our exclusive collection of luxury properties available
+                for sale and rent in the most prestigious locations.
               </p>
-              <button
-                onClick={resetFilters}
-                className="px-6 py-2 bg-primary hover:bg-primary-dark text-white transition-colors text-sm uppercase tracking-wider"
-              >
-                Reset Filters
-              </button>
             </div>
-          )}
-        </div>
-      </section>
-      
-    </MainLayout>
+
+            {/* Filter Panel */}
+            <FilterPanel
+              location={locationFilter}
+              setLocation={setLocationFilter}
+              propertyType={typeFilter}
+              setPropertyType={setTypeFilter}
+              minBedrooms={minBedroomsFilter}
+              setMinBedrooms={setMinBedroomsFilter}
+              priceRange={priceRange}
+              setPriceRange={setPriceRange}
+              areaRange={areaRange}
+              setAreaRange={setAreaRange}
+              applyFilters={applyFilters}
+              resetFilters={resetFilters}
+            />
+
+            {/* Sort Panel */}
+            <SortPanel
+              sortOption={sortOption}
+              setSortOption={setSortOption}
+              totalProperties={filteredProperties.length}
+              view={view}
+              setView={setView}
+            />
+
+            {/* Properties Grid/List View */}
+            {filteredProperties.length > 0 ? (
+              <>
+                {view === "grid" ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+                    {filteredProperties.map((property, index) => (
+                      <PropertyCard
+                        key={property.id}
+                        property={property}
+                        index={index}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="space-y-6">
+                    {filteredProperties.map((property, index) => (
+                      <PropertyListItem
+                        key={property.id}
+                        property={property}
+                        index={index}
+                      />
+                    ))}
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="text-center py-16">
+                <h3 className="text-xl font-medium mb-2">No properties found</h3>
+                <p className="text-muted mb-6">
+                  No properties match your current filter criteria. Try adjusting
+                  your filters.
+                </p>
+                <button
+                  onClick={resetFilters}
+                  className="px-6 py-2 bg-primary hover:bg-primary-dark text-white transition-colors text-sm uppercase tracking-wider"
+                >
+                  Reset Filters
+                </button>
+              </div>
+            )}
+          </div>
+        </section>
+        
+      </MainLayout>
     </Suspense>
   );
 }
