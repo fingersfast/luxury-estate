@@ -23,8 +23,8 @@ export default function AboutPage() {
             </p>
             <p className="mb-6">
               At LuxuryEstate, we understand that purchasing a luxury property
-              is more than just a transaction—it's about finding a home that
-              reflects your unique taste and aspirations. That's why we
+              is more than just a transaction—it&apos;s about finding a home that
+              reflects your unique taste and aspirations. That&apos;s why we
               carefully curate our portfolio to include only the most
               exceptional properties in the most desirable locations.
             </p>

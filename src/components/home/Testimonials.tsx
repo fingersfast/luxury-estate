@@ -118,7 +118,7 @@ export default function Testimonials() {
 
                   <blockquote className="text-center">
                     <p className="text-xl md:text-2xl italic mb-6 max-w-3xl mx-auto leading-relaxed font-heading">
-                      "{testimonials[current].quote}"
+                      &quot;{testimonials[current].quote}&quot;
                     </p>
                     <footer>
                       <p className="font-heading text-lg mb-1">

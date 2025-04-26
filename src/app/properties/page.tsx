@@ -89,7 +89,7 @@ export default function PropertiesPage() {
 
     // Apply filters
     applyFilters();
-  }, [searchParams]);
+  }, [applyFilters]);
 
   // Apply filters function
   const applyFilters = () => {

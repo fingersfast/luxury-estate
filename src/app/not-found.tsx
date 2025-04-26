@@ -31,7 +31,7 @@ export default function NotFound() {
           transition={{ delay: 0.4 }}
           className="text-muted max-w-md mb-8"
         >
-          The page you're looking for doesn't exist or has been moved. Please
+          The page you&apos;re looking for doesn&apos;t exist or has been moved. Please
           check the URL or navigate back to our homepage.
         </motion.p>
 
