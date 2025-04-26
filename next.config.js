@@ -9,7 +9,7 @@ const nextConfig = {
     ],
   },
   eslint: {
-    ignoreDuringBuilds: true, // 👈 add this part!
+    ignoreDuringBuilds: true, // ✅ This is IMPORTANT
   },
 };
 
