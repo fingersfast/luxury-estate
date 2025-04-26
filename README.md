@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LuxuryEstate - Premium Real Estate Website
 
-## Getting Started
+A modern, elegant real estate website that showcases premium properties with an emphasis on visual appeal and interactive elements.
 
-First, run the development server:
+![LuxuryEstate Screenshot](https://placeholder.com/luxuryestate.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Features
+
+- ✨ Modern, minimalist design with luxury aesthetics
+- 🏠 Interactive property listings with hover effects
+- 🗺️ Property map to explore locations
+- 👥 Client testimonials with elegant slider
+- 🌓 Dark/light mode toggle
+- 📱 Fully responsive design for all devices
+- 🚀 Optimized performance with Next.js
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/) - React framework for production
+- [TypeScript](https://www.typescriptlang.org/) - Static typing for JavaScript
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [Framer Motion](https://www.framer.com/motion/) - Animation library
+- [React Icons](https://react-icons.github.io/react-icons/) - Icon library
+- [Mapbox GL](https://docs.mapbox.com/mapbox-gl-js/api/) - Interactive maps
+
+## Setup and Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/luxuryestate.git
+   cd luxuryestate
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Project Structure
+
+```
+luxuryestate/
+├── src/
+│   ├── app/               # Next.js App Router
+│   │   ├── page.tsx      # Page components
+│   │   └── globals.css   # Global styles
+│   ├── components/        # React components
+│   │   ├── home/          # Homepage specific components
+│   │   ├── layout/        # Layout components (header, footer)
+│   │   ├── properties/    # Property-related components
+│   │   └── ui/            # Reusable UI components
+│   └── lib/               # Utility functions
+├── public/                # Static assets
+│   ├── images/            # Image files
+│   └── videos/            # Video files
+└── tailwind.config.ts     # Tailwind CSS configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Customization
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Themes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The website includes a light and dark theme. Colors can be customized in the `src/app/globals.css` file.
 
-## Learn More
+### Adding Properties
 
-To learn more about Next.js, take a look at the following resources:
+To add or modify property listings, update the data in the `src/components/home/FeaturedProperties.tsx` file.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The easiest way to deploy this website is using [Vercel](https://vercel.com/):
 
-## Deploy on Vercel
+```bash
+npm run build
+vercel
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgements
+
+- Property images from [Unsplash](https://unsplash.com/)
+- Icons from [Lucide Icons](https://lucide.dev/)
+- Font pairings: Playfair Display and Inter
