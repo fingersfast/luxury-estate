@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react"; // 🛑 Notice: added useCallback
 import MainLayout from "../../components/layout/MainLayout";
 import PropertyCard from "../../components/properties/PropertyCard";
 import PropertyListItem from "../../components/properties/PropertyListItem";
@@ -21,17 +21,9 @@ export default function PropertiesPage() {
   // Filter states
   const [locationFilter, setLocationFilter] = useState<string>("All Locations");
   const [typeFilter, setTypeFilter] = useState<string>("All Types");
-  const [minBedroomsFilter, setMinBedroomsFilter] = useState<number | null>(
-    null
-  );
-  const [priceRange, setPriceRange] = useState<[number | null, number | null]>([
-    null,
-    null,
-  ]);
-  const [areaRange, setAreaRange] = useState<[number | null, number | null]>([
-    null,
-    null,
-  ]);
+  const [minBedroomsFilter, setMinBedroomsFilter] = useState<number | null>(null);
+  const [priceRange, setPriceRange] = useState<[number | null, number | null]>([null, null]);
+  const [areaRange, setAreaRange] = useState<[number | null, number | null]>([null, null]);
 
   // Sort and view states
   const [sortOption, setSortOption] = useState<string>("price-desc");
@@ -40,7 +32,32 @@ export default function PropertiesPage() {
   // Filtered properties
   const [filteredProperties, setFilteredProperties] = useState(properties);
 
-  // Handle URL parameters for filters
+  // ✅ FIRST: declare applyFilters using useCallback (important for useEffect dependency)
+  const applyFilters = useCallback(() => {
+    let filtered = filterProperties(
+      properties,
+      locationFilter,
+      typeFilter,
+      minBedroomsFilter,
+      priceRange[0],
+      priceRange[1],
+      areaRange[0],
+      areaRange[1]
+    );
+
+    filtered = sortProperties(filtered, sortOption);
+
+    setFilteredProperties(filtered);
+  }, [
+    locationFilter,
+    typeFilter,
+    minBedroomsFilter,
+    priceRange,
+    areaRange,
+    sortOption
+  ]);
+
+  // 🛠 THEN use applyFilters inside useEffect
   useEffect(() => {
     const locationParam = searchParams.get("location");
     const typeParam = searchParams.get("type");
@@ -52,7 +69,6 @@ export default function PropertiesPage() {
     const sortParam = searchParams.get("sort");
     const viewParam = searchParams.get("view") as "grid" | "list" | null;
 
-    // Set filters from URL params if they exist
     if (locationParam && locations.includes(locationParam)) {
       setLocationFilter(locationParam);
     }
@@ -87,30 +103,9 @@ export default function PropertiesPage() {
       setView(viewParam);
     }
 
-    // Apply filters
+    // ✅ Now applyFilters is defined already
     applyFilters();
-  }, [applyFilters]);
-
-  // Apply filters function
-  const applyFilters = () => {
-    // First filter the properties
-    let filtered = filterProperties(
-      properties,
-      locationFilter,
-      typeFilter,
-      minBedroomsFilter,
-      priceRange[0],
-      priceRange[1],
-      areaRange[0],
-      areaRange[1]
-    );
-
-    // Then sort the filtered properties
-    filtered = sortProperties(filtered, sortOption);
-
-    // Update state
-    setFilteredProperties(filtered);
-  };
+  }, [searchParams, applyFilters]);
 
   // Reset all filters
   const resetFilters = () => {
@@ -120,10 +115,10 @@ export default function PropertiesPage() {
     setPriceRange([null, null]);
     setAreaRange([null, null]);
 
-    // Apply the reset filters
     setTimeout(applyFilters, 0);
   };
 
+  // UI Code same as before
   return (
     <MainLayout>
       <section className="pt-32 pb-20">
