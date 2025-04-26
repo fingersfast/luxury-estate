@@ -2,10 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"; // 🛑 Notice: added useCallback
 import MainLayout from "../../components/layout/MainLayout";
-import PropertyCard from "../../components/properties/PropertyCard";
-import PropertyListItem from "../../components/properties/PropertyListItem";
-import FilterPanel from "../../components/properties/FilterPanel";
-import SortPanel from "../../components/properties/SortPanel";
+
 import {
   properties,
   filterProperties,
