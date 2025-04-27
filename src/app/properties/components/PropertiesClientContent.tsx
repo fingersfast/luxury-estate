@@ -1,7 +1,7 @@
 // app/properties/components/PropertiesClientContent.tsx
 "use client";
 
-import React, { useState, useEffect, useCallback, Suspense } from "react"; // Import React
+import React, { useState, useEffect, useCallback, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import PropertyCard from "../../../components/properties/PropertyCard";
 import PropertyListItem from "../../../components/properties/PropertyListItem"; // Adjust path if needed
@@ -30,8 +30,8 @@ interface Property {
 }
 
 // --- Component Logic ---
-function PropertiesLogic(): JSX.Element {
-  // Explicit return type
+function PropertiesLogic(): React.ReactElement {
+  // Changed return type from JSX.Element to React.ReactElement
   const searchParams = useSearchParams();
 
   // Base properties typed
@@ -242,8 +242,8 @@ function PropertiesLogic(): JSX.Element {
 }
 
 // Exported component providing the Suspense boundary
-export default function PropertiesClientContent(): JSX.Element {
-  // Explicit return type
+export default function PropertiesClientContent(): React.ReactElement {
+  // Changed return type from JSX.Element to React.ReactElement
   return (
     <Suspense
       fallback={<div className="text-center py-16">Loading properties...</div>}
