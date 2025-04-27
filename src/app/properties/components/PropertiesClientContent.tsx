@@ -18,24 +18,23 @@ import {
 // --- 1. Define the Property type/interface ---
 // (Adjust this based on your actual property data structure)
 interface Property {
-  id: string | number; // Use string or number as appropriate
-  name: string;
+  id: string | number;
+  // Remove 'name' and 'imageUrl' if they don't exist in your actual data objects
+  // Or modify other properties to match what you actually have
   location: string;
   type: string;
   bedrooms: number;
   price: number;
   area: number;
-  imageUrl: string;
-  // Add other fields as needed
+  // Add any other properties that exist in your actual data
 }
-
 // --- Component Logic ---
 function PropertiesLogic(): React.ReactElement {
   // Changed return type from JSX.Element to React.ReactElement
   const searchParams = useSearchParams();
 
   // Base properties typed
-  const allProperties: Property[] = allPropertiesData;
+  const allProperties: Property[] = allPropertiesData as unknown as Property[];
 
   // --- Typed State Hooks ---
   const [locationFilter, setLocationFilter] = useState<string>("All Locations");
